@@ -10,10 +10,6 @@ public class Calculateur {
         this.conjonctions = new ArrayList<>(conjonctions);
     }
 
-    public void ajouterConjonction(Conjonctions conjonction) {
-        this.conjonctions.add(conjonction);
-    }
-
     public boolean calculerToutesLesVérités() {
         for (Conjonctions conjonction : conjonctions) {
             if (!conjonction.calculerVerite()) {

@@ -12,26 +12,18 @@ public class Conjonctions {
         this.type = type;
     }
 
-    public List<Affirmations> getAffirmations() {
-        return affirmations;
-    }
-
-    public String getType() {
-        return type;
-    }
-
     public boolean calculerVerite() {
         switch (type.toLowerCase()) {
             case "et":
                 for (Affirmations affirmation : affirmations) {
-                    if (!affirmation.isVraie()) {
+                    if (!affirmation.estVraie(affirmation)) {
                         return false;
                     }
                 }
                 return true;
             case "ou":
                 for (Affirmations affirmation : affirmations) {
-                    if (affirmation.isVraie()) {
+                    if (affirmation.estVraie(affirmation)) {
                         return true;
                     }
                 }
@@ -39,7 +31,7 @@ public class Conjonctions {
             case "donc":
                 Affirmations p = affirmations.get(0);
                 Affirmations q = affirmations.get(1);
-                return p.isVraie() ||!q.isVraie();
+                return p.estVraie(p) ||!q.estVraie(q);
             default:
                 throw new IllegalArgumentException("Type de conjonction non supporté: " + type);
         }
