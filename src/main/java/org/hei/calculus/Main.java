@@ -1,6 +1,8 @@
 package org.hei.calculus;
 
-import org.hei.calculus.calcul.Affirmations;
+import org.hei.calculus.affirmable.Affirmations;
+import org.hei.calculus.affirmable.Mensonge;
+import org.hei.calculus.affirmable.Verite;
 import org.hei.calculus.calcul.Calculateur;
 import org.hei.calculus.calcul.Conjonctions;
 
@@ -9,11 +11,16 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Affirmations a1 = new Affirmations("Lou est beau", "verite");
-        Affirmations a2 = new Affirmations("Lou est pauvre", "verite");
-        Conjonctions c1 = new Conjonctions(List.of(a1, a2), "et");
+        Verite v1 = new Verite("Lou est beau");
+        Verite v2 = new Verite("Lou est pauvre");
 
-        Calculateur calculateur = new Calculateur(List.of(c1));
-        System.out.println(calculateur.calculerToutesLesVérités());
+        Conjonctions c1 = new Conjonctions(List.of(v1, v2), "et");
+
+        List<Conjonctions> conjonctions = List.of(c1);
+        Calculateur calculateur = new Calculateur(conjonctions);
+
+        boolean resultat = calculateur.calculerToutesLesVerites();
+        System.out.println(resultat);
+
     }
 }

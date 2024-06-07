@@ -10,7 +10,7 @@ public class Calculateur {
         this.conjonctions = new ArrayList<>(conjonctions);
     }
 
-    public boolean calculerToutesLesVérités() {
+    public boolean calculerToutesLesVerites() {
         for (Conjonctions conjonction : conjonctions) {
             if (!conjonction.calculerVerite()) {
                 return false;
