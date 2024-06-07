@@ -12,9 +12,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Verite v1 = new Verite("Lou est beau");
-        Verite v2 = new Verite("Lou est pauvre");
+        Mensonge v2 = new Mensonge("Lou est pauvre");
 
-        Conjonctions c1 = new Conjonctions(List.of(v1, v2), "et");
+        Conjonctions c1 = new Conjonctions(List.of(v1, v2), "donc");
 
         List<Conjonctions> conjonctions = List.of(c1);
         Calculateur calculateur = new Calculateur(conjonctions);
